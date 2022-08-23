@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            margin-left: 150px;
+        }
+        .move {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        .move:nth-of-type(3n+1){
+            background-color: red;
+        }
+        .move:nth-of-type(3n+2){
+            background-color: pink;
+        }
+        .move:nth-of-type(3n){
+            background-color: coral;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="move"></div>
+        <div class="move"></div>
+        <div class="move"></div>
+        <div class="move"></div>
+        <div class="move"></div>
+        <div class="move"></div>
+        <div class="move"></div>
+        <div class="move"></div>
+        <div class="move"></div>
+        <div class="move"></div>
+        <div class="move"></div>
+        <div class="move"></div>
+        <div class="move"></div>
+        <div class="move"></div>
+        <div class="move"></div>
+    </div>
+    <script>
+        const container = document.querySelector('.container');
+        const move = document.getElementsByClassName('move');
+        let center = [window.innerWidth/2, window.innerHeight/2];
+
+        window.addEventListener('resize', ()=>{
+            let center = [window.innerWidth/2, window.innerHeight/2];
+            console.log(center);
+        })
+
+        for(let i=0 ; i<move.length; i ++){
+            container.addEventListener('mousemove', (e) => {
+                const vecter = Math.pow(-1,i);
+                const pointerNow = [e.clientX-center[0], e.clientY-center[1]];
+                const howMove = [pointerNow[0]/center[0]*100*vecter,pointerNow[1]/center[1]*100*vecter]
+                move[i].style.transform = `translate(${howMove[0]}px,${howMove[1]}px)`
+
+            })
+        }
+        
+    </script>
+</body>
+</html>

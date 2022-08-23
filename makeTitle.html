@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+
+    .neon {
+        position: relative;
+        height: 21px;
+    }
+    .neon > p {
+        position: absolute;
+
+    }
+    .neon > .stroke1 {
+        text-shadow: 0px 0px 4px pink;
+    }
+    .neon > .stroke2 {
+        color: red
+    }
+    </style>
+
+</head>
+<body>
+    <div class="neon" data-color="red">안녕하세요</div>
+
+        <div class="neon" data-color="blue">저는 홍길동입니다</div>
+
+        <script>
+            const neon = document.getElementsByClassName('neon');
+
+
+            for(let i = 0 ; i < neon.length ; i ++) {
+                
+                const neonText = neon[i].innerText;
+                // neon.innerText="";
+                
+                neon[i].innerHTML =`
+                <p class ="stroke1">${neonText}</p>
+                <p class ="stroke2" style ="color : ${neon[i].dataset.color};">${neonText}</p>
+                `
+            }
+
+        </script>
+
+</body>
+</html>

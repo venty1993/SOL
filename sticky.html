@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        
+        }
+        .container {
+            display: flex;
+            margin-top: 2000px;
+            margin-bottom: 2000px;
+        }
+        .fixed-content {
+            /* 가운데 고정시켜놓기 */
+            position: sticky;
+            margin: 25vh 0;
+            top: 25vh;
+            height: 50vh;
+            width: 50%;
+            background-color: pink;
+        }
+
+        .flow-content {
+            width: 50%;
+            height: 3000px;
+            background-image: linear-gradient(0deg, #121212, #ebebeb);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="fixed-content"></div>
+        <div class="flow-content"></div>
+    </div>
+</body>
+</html>

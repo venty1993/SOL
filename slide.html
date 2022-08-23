@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .slide-container {
+            width: 300px;
+            height: 200px;
+            overflow: hidden;
+            border: 3px solid black;
+        }  
+
+        .slide-wrapper {
+            display: flex;
+            transition: 1s;
+        }
+
+        .slide-container li {
+            width: 100px;
+            height: 200px;
+            flex-shrink: 0;
+            line-height: 200px;
+            text-align: center;
+            font-size: 56px;
+            font-weight: bold;
+        }
+
+        .slide1 {
+            background-color: aqua;
+        }
+        .slide2 {
+            background-color: blue;
+        }
+        .slide3 {
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <ul class="slide-wrapper">
+            <li class="slide1">1</li>
+            <li class="slide2">2</li>
+            <li class="slide3">3</li>
+        </ul>
+    </div>
+    <button onclick="next()">next</button>
+    <script>
+
+
+        const sliderWrapper = document.querySelector('.slide-wrapper');
+        const copy = sliderWrapper.children[0].cloneNode(1)
+        sliderWrapper.appendChild(copy);
+        let index = 0;
+        let moveCheck=true;
+
+        function next(){
+            if(moveCheck){
+                moveCheck=false;
+                index++;
+                moveSlide(1000);
+                if(index===sliderWrapper.childElementCount-1){
+                    index=0;
+                    setTimeout(() => {
+                        moveSlide(0);
+                    }, 1000);
+                }
+                setTimeout(() => {
+                    moveCheck=true;
+                }, 1000);
+            }
+        }
+        function moveSlide(time) {
+            sliderWrapper.style.transition = `${time}ms`;
+            sliderWrapper.style.transform = `translateX(-${index*100-100}px)`;
+            for(let i=0;i<sliderWrapper.childElementCount;i++){
+                sliderWrapper.children[i].style.transform = `scale(1)`;
+            }
+            sliderWrapper.children[index].style.transform = `scale(1.5)`;
+            
+        }
+    </script>
+</body>
+</html>

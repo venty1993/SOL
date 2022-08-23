@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+        .light {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            position: absolute;
+            z-index: 100;
+            transform: translate(-50%,-50%);
+            border-radius: 50%;
+            top: -50%;
+            left: -50%;
+
+        }
+        .container {
+            position: relative;
+            height: 100vh;
+        }
+
+        .container > div{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            font-size: 56px;
+        }
+
+        .on-mouse-view {
+            clip-path: inset(50% 50%);
+            z-index: 9999;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="light"></div>
+    <div class="container">
+        <div class="normal">ㅁㅁㅁㅁㅁㅁㅁㅁ</div>
+        <div class="on-mouse-view">후하후하후하후하</div>
+    </div>
+
+    <script>
+        const light = document.querySelector('.light');
+        const onMouseView = document.querySelector('.on-mouse-view');
+
+        window.addEventListener('mousemove', (e)=>{
+            light.style.left = `${e.clientX}px`;
+            light.style.top = `${e.clientY+window.scrollY}px`;
+            onMouseView.style.clipPath=`ellipse(100px 100px at ${e.clientX-onMouseView.getBoundingClientRect().left}px ${e.clientY+window.scrollY- onMouseView.getBoundingClientRect().top}px)`
+
+            console.log(e);
+        })
+
+    </script>
+</body>
+</html>

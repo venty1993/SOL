@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="copy">돈이 복사된다고?</p>
+    <script>
+        const copyTextContent = document.getElementById('copy');
+        copyTextContent.addEventListener('click',()=>{
+            navigator.clipboard.writeText(copyTextContent.innerText)
+            alert('복사되었다고!')
+        })
+    </script>
+</body>
+</html>

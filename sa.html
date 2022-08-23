@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .margin {
+            height: 2000px;
+        }
+        .fade-in {
+            font-size: 56px;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateY(200px);
+            transition: 1s;
+        }
+        
+        .show {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="margin"></div>
+    <div class="fade-in">ㅎㅇ</div>
+    <div class="margin"></div>
+    <div class="fade-in">ㅎㅇ</div>
+    <div class="margin"></div>
+    <div class="fade-in">ㅎㅇ</div>
+    <div class="margin"></div>
+    <div class="fade-in">ㅎㅇ</div>
+    <div class="margin"></div>
+    <script>
+        const fadeInContent = document.getElementsByClassName('fade-in')
+
+        window.addEventListener('scroll',()=>{
+            for(let i = 0 ; i < fadeInContent.length ; i ++){
+                if(fadeInContent[i].getBoundingClientRect().top-(window.innerHeight) < 0){
+                    fadeInContent[i].classList.add('show');
+                }
+            }
+        })
+    </script>
+</body>
+</html>
